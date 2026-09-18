@@ -1,0 +1,62 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "The Things Stack (MQTT)",
+        "description": "Credentials from the TTS console under Integrations → MQTT. The API key needs read rights on the application.",
+        "data": {
+          "host": "Server / region (hostname)",
+          "port": "Port (8883 = TLS)",
+          "application_id": "Application ID",
+          "tenant_id": "Tenant ID (TTN: ttn, open source: leave empty)",
+          "api_key": "API key",
+          "use_tls": "Use TLS"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not connect to the broker. Check host/port.",
+      "invalid_auth": "Connection refused. Check application ID, tenant and API key.",
+      "unknown": "Unexpected error."
+    },
+    "abort": {
+      "already_configured": "This application is already configured."
+    }
+  },
+  "services": {
+    "send_downlink": {
+      "name": "Send downlink",
+      "description": "Queues a downlink for a LoRaWAN device (TTS/TTN). For class A devices it is delivered with the next uplink.",
+      "fields": {
+        "device_id": {
+          "name": "Device ID",
+          "description": "End device ID in TTS (as in the uplink, e.g. elsys-ers-01)."
+        },
+        "f_port": {
+          "name": "FPort",
+          "description": "LoRaWAN FPort (1-223), per actuator/decoder."
+        },
+        "payload": {
+          "name": "Payload (hex)",
+          "description": "Payload as a hex string, e.g. 0A0F. Leave empty for an empty downlink (FPort only)."
+        },
+        "payload_base64": {
+          "name": "Payload (base64)",
+          "description": "Alternative to Payload (hex): payload directly as base64. Takes precedence if both are set."
+        },
+        "confirmed": {
+          "name": "Confirmed",
+          "description": "Confirmed downlink (device acknowledges receipt)."
+        },
+        "priority": {
+          "name": "Priority",
+          "description": "Network send priority."
+        },
+        "application_id": {
+          "name": "Application ID",
+          "description": "Only needed if multiple TTS applications are configured and the device cannot be resolved unambiguously."
+        }
+      }
+    }
+  }
+}

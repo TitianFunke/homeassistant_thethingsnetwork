@@ -1,0 +1,67 @@
+send_downlink:
+  name: Downlink senden
+  description: >-
+    Legt einen Downlink in die Warteschlange eines LoRaWAN-Geräts (TTS/TTN).
+    Bei Klasse-A-Geräten wird der Downlink mit dem nächsten Uplink zugestellt.
+  fields:
+    device_id:
+      name: Device ID
+      description: End-Device-ID im TTS (wie im Uplink, z. B. elsys-ers-01).
+      required: true
+      example: elsys-ers-01
+      selector:
+        text:
+    f_port:
+      name: FPort
+      description: LoRaWAN FPort (1–223), gemäß Aktor/Decoder.
+      required: true
+      example: 15
+      selector:
+        number:
+          min: 1
+          max: 223
+          mode: box
+    payload:
+      name: Payload (Hex)
+      description: >-
+        Nutzdaten als Hex-String, z. B. "0A0F" oder "0a 0f". Leer lassen für
+        einen leeren Downlink (nur FPort).
+      example: "0A0F"
+      selector:
+        text:
+    payload_base64:
+      name: Payload (Base64)
+      description: >-
+        Alternative zu "Payload (Hex)": Nutzdaten direkt als Base64. Hat
+        Vorrang, wenn beides gesetzt ist.
+      example: "Cg8="
+      selector:
+        text:
+    confirmed:
+      name: Bestätigt
+      description: Confirmed Downlink (Gerät quittiert den Empfang).
+      default: false
+      selector:
+        boolean:
+    priority:
+      name: Priorität
+      description: Sendepriorität im Netzwerk.
+      default: NORMAL
+      selector:
+        select:
+          options:
+            - LOWEST
+            - LOW
+            - BELOW_NORMAL
+            - NORMAL
+            - ABOVE_NORMAL
+            - HIGH
+            - HIGHEST
+    application_id:
+      name: Application ID
+      description: >-
+        Nur nötig, wenn mehrere TTS-Anwendungen eingerichtet sind und das
+        Gerät nicht eindeutig zugeordnet werden kann.
+      example: aot-sensoren
+      selector:
+        text:

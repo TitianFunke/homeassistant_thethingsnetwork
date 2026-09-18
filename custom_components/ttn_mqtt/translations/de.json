@@ -1,0 +1,62 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "The Things Stack (MQTT)",
+        "description": "Zugangsdaten aus der TTS-Console unter Integrations → MQTT. Der API-Key benötigt Leserechte auf die Anwendung.",
+        "data": {
+          "host": "Server / Region (Hostname)",
+          "port": "Port (8883 = TLS)",
+          "application_id": "Application ID",
+          "tenant_id": "Tenant ID (TTN: ttn, Open Source: leer lassen)",
+          "api_key": "API-Key",
+          "use_tls": "TLS verwenden"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Verbindung zum Broker fehlgeschlagen. Host/Port prüfen.",
+      "invalid_auth": "Anmeldung abgelehnt. Application ID, Tenant und API-Key prüfen.",
+      "unknown": "Unerwarteter Fehler."
+    },
+    "abort": {
+      "already_configured": "Diese Anwendung ist bereits eingerichtet."
+    }
+  },
+  "services": {
+    "send_downlink": {
+      "name": "Downlink senden",
+      "description": "Legt einen Downlink in die Warteschlange eines LoRaWAN-Geräts (TTS/TTN). Bei Klasse-A-Geräten wird der Downlink mit dem nächsten Uplink zugestellt.",
+      "fields": {
+        "device_id": {
+          "name": "Device ID",
+          "description": "End-Device-ID im TTS (wie im Uplink, z. B. elsys-ers-01)."
+        },
+        "f_port": {
+          "name": "FPort",
+          "description": "LoRaWAN FPort (1–223), gemäß Aktor/Decoder."
+        },
+        "payload": {
+          "name": "Payload (Hex)",
+          "description": "Nutzdaten als Hex-String, z. B. 0A0F. Leer lassen für einen leeren Downlink (nur FPort)."
+        },
+        "payload_base64": {
+          "name": "Payload (Base64)",
+          "description": "Alternative zu Payload (Hex): Nutzdaten direkt als Base64. Hat Vorrang, wenn beides gesetzt ist."
+        },
+        "confirmed": {
+          "name": "Bestätigt",
+          "description": "Confirmed Downlink (Gerät quittiert den Empfang)."
+        },
+        "priority": {
+          "name": "Priorität",
+          "description": "Sendepriorität im Netzwerk."
+        },
+        "application_id": {
+          "name": "Application ID",
+          "description": "Nur nötig, wenn mehrere TTS-Anwendungen eingerichtet sind und das Gerät nicht eindeutig zugeordnet werden kann."
+        }
+      }
+    }
+  }
+}
