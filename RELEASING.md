@@ -6,7 +6,7 @@ optional als Eintrag im **HACS-Default-Store** (auffindbar für alle, mit
 Review-Prozess).
 
 > **Vor allem: zwei Platzhalter ersetzen.** Im Projekt steht überall
-> `alpha-omega-technology/ha-ttn-mqtt` als Owner/Repo. Falls euer echtes
+> `Alpha-Omega-Technology/homeassistant_thethingsnetwork` als Owner/Repo. Falls euer echtes
 > GitHub-Repo anders heißt, in diesen Dateien anpassen:
 > `custom_components/ttn_mqtt/manifest.json` (`documentation`, `issue_tracker`,
 > `codeowners`), `info.md`, `README.md`, `hacs.json`.
@@ -17,7 +17,7 @@ Review-Prozess).
 
 Damit kann es jeder sofort über HACS → „Custom repositories" installieren.
 
-1. **Öffentliches GitHub-Repo anlegen** (z. B. `alpha-omega-technology/ha-ttn-mqtt`)
+1. **Öffentliches GitHub-Repo anlegen** (z. B. `Alpha-Omega-Technology/homeassistant_thethingsnetwork`)
    und den Inhalt dieses Ordners pushen. Struktur muss so sein:
 
    ```
@@ -98,7 +98,7 @@ Die fertigen Icons liegen bereits im Repo unter [`icons/`](icons/):
 
 1. Fork von `github.com/hacs/default`.
 2. In der Datei `integration` das Repo im Format `owner/repo` (z. B.
-   `alpha-omega-technology/ha-ttn-mqtt`) an der alphabetisch richtigen Stelle
+   `Alpha-Omega-Technology/homeassistant_thethingsnetwork`) an der alphabetisch richtigen Stelle
    ergänzen.
 3. Pull Request stellen. Der HACS-Bot prüft automatisch alle Anforderungen
    (öffentlich, Description, Topics, Struktur, Validierung, Brand vorhanden).
@@ -121,7 +121,7 @@ Die fertigen Icons liegen bereits im Repo unter [`icons/`](icons/):
 
 ## Schnell-Checkliste
 
-- [ ] Platzhalter `alpha-omega-technology/ha-ttn-mqtt` überall ersetzt
+- [ ] Platzhalter `Alpha-Omega-Technology/homeassistant_thethingsnetwork` überall ersetzt
 - [ ] Öffentliches Repo mit korrekter Ordnerstruktur
 - [ ] Repo-Description + Topics gesetzt
 - [ ] `validate.yml` läuft grün (HACS + Hassfest)

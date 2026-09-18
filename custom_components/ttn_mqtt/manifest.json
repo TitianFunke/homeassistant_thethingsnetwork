@@ -1,13 +1,13 @@
 {
   "domain": "ttn_mqtt",
   "name": "The Things Stack (MQTT)",
-  "codeowners": ["@alpha-omega-technology"],
+  "codeowners": ["@Alpha-Omega-Technology"],
   "config_flow": true,
   "dependencies": [],
-  "documentation": "https://github.com/alpha-omega-technology/ha-ttn-mqtt",
+  "documentation": "https://github.com/Alpha-Omega-Technology/homeassistant_thethingsnetwork",
   "integration_type": "hub",
   "iot_class": "cloud_push",
-  "issue_tracker": "https://github.com/alpha-omega-technology/ha-ttn-mqtt/issues",
+  "issue_tracker": "https://github.com/Alpha-Omega-Technology/homeassistant_thethingsnetwork/issues",
   "requirements": ["paho-mqtt>=1.6.1"],
   "version": "0.2.0"
 }

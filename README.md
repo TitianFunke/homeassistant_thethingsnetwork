@@ -7,10 +7,10 @@
 **LoRaWAN-Geräte und Live-Daten aus The Things Stack / The Things Network — automatisch in Home Assistant.**
 
 [![HACS Custom](https://img.shields.io/badge/HACS-Custom-41BDF5.svg?style=for-the-badge)](https://hacs.xyz)
-[![Release](https://img.shields.io/github/v/release/alpha-omega-technology/ha-ttn-mqtt?style=for-the-badge&color=10537E)](https://github.com/alpha-omega-technology/ha-ttn-mqtt/releases)
-[![License](https://img.shields.io/github/license/alpha-omega-technology/ha-ttn-mqtt?style=for-the-badge&color=62B22E)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/Alpha-Omega-Technology/homeassistant_thethingsnetwork?style=for-the-badge&color=10537E)](https://github.com/Alpha-Omega-Technology/homeassistant_thethingsnetwork/releases)
+[![License](https://img.shields.io/github/license/Alpha-Omega-Technology/homeassistant_thethingsnetwork?style=for-the-badge&color=62B22E)](LICENSE)
 
-[![In HACS öffnen](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=alpha-omega-technology&repository=ha-ttn-mqtt&category=integration)
+[![In HACS öffnen](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=Alpha-Omega-Technology&repository=homeassistant_thethingsnetwork&category=integration)
 
 </div>
 
@@ -83,7 +83,7 @@ Am schnellsten über den Button oben („In HACS öffnen") — er öffnet in dei
 HA-Instanz direkt den Dialog zum Hinzufügen dieses Repositories. Alternativ von Hand:
 
 1. HACS → oben rechts die drei Punkte → **Custom repositories**.
-2. Repository-URL `https://github.com/alpha-omega-technology/ha-ttn-mqtt` eintragen, Kategorie **Integration**, *Add*.
+2. Repository-URL `https://github.com/Alpha-Omega-Technology/homeassistant_thethingsnetwork` eintragen, Kategorie **Integration**, *Add*.
 3. Nach „The Things Stack (MQTT)" suchen → **Download**.
 4. Home Assistant neu starten.
 

@@ -18,4 +18,4 @@ Sensor-Entities angelegt.
 
 Für echte Messwerte muss im TTS ein **Payload-Formatter (Decoder)** für das
 Gerät hinterlegt sein. Details, Setup und Beispiele in der
-[README](https://github.com/alpha-omega-technology/ha-ttn-mqtt).
+[README](https://github.com/Alpha-Omega-Technology/homeassistant_thethingsnetwork).
