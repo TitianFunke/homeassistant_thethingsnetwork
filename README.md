@@ -1,32 +1,53 @@
-# The Things Stack (MQTT) — Home Assistant Integration
+<div align="center">
 
-Custom Integration, die Geräte und Live-Daten aus **The Things Stack** bzw. **The Things Network (TTN)** direkt in Home Assistant bringt — über den nativen MQTT-Broker von TTS. Geräte und Messwerte werden **automatisch erkannt** und als Home-Assistant-Devices mit Sensor-Entities angelegt, ähnlich wie man es von einer ThingsBoard-Anbindung kennt.
+<img src="icons/icon.png" alt="The Things Stack (MQTT)" width="128" />
 
-Entwickelt von / für **Alpha-Omega Technology**.
+# The Things Stack (MQTT) für Home Assistant
 
-## Was die Integration macht
+**LoRaWAN-Geräte und Live-Daten aus The Things Stack / The Things Network — automatisch in Home Assistant.**
 
-- Verbindet sich per MQTT (TLS) mit dem TTS-/TTN-Broker deiner Anwendung.
-- Abonniert alle Uplinks der Anwendung (`v3/{app}@{tenant}/devices/+/up`).
-- Legt pro LoRaWAN-Gerät automatisch ein HA-Device an.
-- Erzeugt pro Messwert automatisch eine Sensor-Entity aus `decoded_payload`
-  (also aus dem im TTS hinterlegten Payload-Formatter/Hersteller-Decoder).
-- Zusätzlich Diagnose-Sensoren: RSSI, SNR, Frame-Counter, Spreading Factor,
-  Bandbreite, Frequenz, Gateway-Anzahl, Airtime.
-- Neue Geräte, die später zum ersten Mal senden, erscheinen automatisch —
-  ohne Neustart.
+[![HACS Custom](https://img.shields.io/badge/HACS-Custom-41BDF5.svg?style=for-the-badge)](https://hacs.xyz)
+[![Release](https://img.shields.io/github/v/release/alpha-omega-technology/ha-ttn-mqtt?style=for-the-badge&color=10537E)](https://github.com/alpha-omega-technology/ha-ttn-mqtt/releases)
+[![License](https://img.shields.io/github/license/alpha-omega-technology/ha-ttn-mqtt?style=for-the-badge&color=62B22E)](LICENSE)
 
-> **Version 0.1.0** ist bewusst read-only (Uplink → Sensoren). Die Architektur
-> ist so angelegt, dass Downlink-Steuerung (Buttons/Services) später ergänzt
-> werden kann.
+[![In HACS öffnen](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=alpha-omega-technology&repository=ha-ttn-mqtt&category=integration)
 
-## ⚠️ Voraussetzung: Payload-Formatter (Decoder) im TTS/TTN
+</div>
 
-> **Wichtig:** Damit echte Messwerte (Temperatur, Feuchte, Füllstand …) in Home
-> Assistant erscheinen, muss im TTS/TTN für das Gerät ein **Payload Formatter
-> (Uplink-Decoder)** hinterlegt sein. Ohne Decoder überträgt der Uplink nur
-> `frm_payload` als Base64 — dann gibt es in HA **nur die Diagnose-Sensoren**
-> (RSSI, SNR, Frame-Counter …), aber keine dekodierten Fachwerte.
+---
+
+Verbindet **The Things Stack** bzw. **The Things Network (TTN)** über den nativen
+MQTT-Broker mit Home Assistant. Geräte und Messwerte werden **automatisch erkannt**
+und als HA-Devices mit Sensor-Entities angelegt — inklusive Downlink-Steuerung.
+
+_Entwickelt von / für **Alpha-Omega Technology**._
+
+## ✨ Funktionen
+
+- 📡 **MQTT-Anbindung (TLS)** an TTN Community oder eigene TTS-/TTI-Cloud-Instanz.
+- 🔍 **Auto-Discovery:** pro LoRaWAN-Gerät ein HA-Device, pro Messwert eine Sensor-Entity — aus dem `decoded_payload` des TTS-Decoders.
+- 📊 **Diagnose-Sensoren:** RSSI, SNR, Frame-Counter, Spreading Factor, Bandbreite, Frequenz, Gateway-Anzahl, Airtime.
+- 🔌 **Downlinks** per Service `ttn_mqtt.send_downlink` (Aktoren, Ventile, z. B. Milesight WS523).
+- ⚙️ **Einrichtung komplett über die HA-Oberfläche** (Config-Flow), keine YAML nötig.
+- ➕ Neue Geräte erscheinen automatisch, sobald sie das erste Mal senden — ohne Neustart.
+
+## 📑 Inhalt
+
+- [Voraussetzung: Decoder im TTS](#voraussetzung-payload-formatter-decoder-im-ttsttn)
+- [Installation](#installation)
+- [Einrichtung](#einrichtung)
+- [Downlinks senden](#downlinks-senden)
+- [Praxisbeispiel: Milesight WS523](#praxisbeispiel-milesight-ws523-smart-socket-schalten)
+- [Roadmap](#roadmap)
+- [Veröffentlichung als HACS-Modul](#veröffentlichung-als-hacs-modul)
+
+## Voraussetzung: Payload-Formatter (Decoder) im TTS/TTN
+
+> ⚠️ **Ohne Decoder keine Fachwerte.** Damit echte Messwerte (Temperatur,
+> Feuchte, Füllstand …) in Home Assistant erscheinen, muss im TTS/TTN für das
+> Gerät ein **Payload Formatter (Uplink-Decoder)** hinterlegt sein. Ohne Decoder
+> überträgt der Uplink nur `frm_payload` als Base64 — dann gibt es in HA **nur die
+> Diagnose-Sensoren** (RSSI, SNR, Frame-Counter …), aber keine dekodierten Fachwerte.
 
 Der Decoder erzeugt im Uplink das Objekt `uplink_message.decoded_payload`, und
 genau daraus baut diese Integration die Sensor-Entities. Kein Decoder → kein
@@ -58,9 +79,12 @@ des Geräts (Klasse A) warten, dann erscheinen die Sensoren in HA.
 
 ### Variante A — HACS (empfohlen)
 
-1. HACS → drei Punkte → **Custom repositories**.
-2. Repository-URL dieses Projekts eintragen, Kategorie **Integration**.
-3. „The Things Stack (MQTT)" installieren.
+Am schnellsten über den Button oben („In HACS öffnen") — er öffnet in deiner
+HA-Instanz direkt den Dialog zum Hinzufügen dieses Repositories. Alternativ von Hand:
+
+1. HACS → oben rechts die drei Punkte → **Custom repositories**.
+2. Repository-URL `https://github.com/alpha-omega-technology/ha-ttn-mqtt` eintragen, Kategorie **Integration**, *Add*.
+3. Nach „The Things Stack (MQTT)" suchen → **Download**.
 4. Home Assistant neu starten.
 
 ### Variante B — manuell

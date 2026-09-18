@@ -79,15 +79,20 @@ Zwei Voraussetzungen zusätzlich zu Stufe 1:
 
 Ohne Brand-Eintrag akzeptiert der Default-Store die Integration nicht.
 
+Die fertigen Icons liegen bereits im Repo unter [`icons/`](icons/):
+`icon.png` (256×256), `icon@2x.png` (512×512) und die Quelldatei `icon.svg`
+(im AOT-CD: Primärblau `#10537E`, Grün `#62B22E`, Teal `#04A098`).
+
 1. Fork von `github.com/home-assistant/brands`.
-2. Ordner `custom_integrations/ttn_mqtt/` anlegen mit:
-   - `icon.png` — **256×256** px, transparenter Hintergrund
-     (zusätzlich empfohlen: `icon@2x.png` 512×512)
-   - optional `logo.png` (horizontales Logo)
+2. Ordner `custom_integrations/ttn_mqtt/` anlegen und dort ablegen:
+   - `icon.png` ← aus `icons/icon.png` (256×256, transparenter Hintergrund)
+   - `icon@2x.png` ← aus `icons/icon@2x.png` (512×512)
+   - optional `logo.png` / `logo@2x.png` (horizontales Logo)
 3. Pull Request gegen `home-assistant/brands` stellen und mergen lassen.
 
-> AOT-CD als Orientierung fürs Icon: Primärblau `#10537E`, Grün `#62B22E`,
-> Teal `#04A098`.
+> Hinweis: Das `icons/`-Verzeichnis im Integrations-Repo dient als Quelle und
+> für die Anzeige in der README. Für die Icon-Anzeige **in Home Assistant selbst**
+> ist der Brands-PR nötig — HACS/HA laden das Icon aus dem `brands`-Repo.
 
 ### 2b. PR gegen `hacs/default`
 
